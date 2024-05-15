@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: golangapi-service
+  namespace: app
+spec:
+  selector:
+    app: golangapi
+  ports:
+    - protocol: TCP
+      port: 8080
+

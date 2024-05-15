@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: web-server
+  namespace: app
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: web-server
+  template:
+    metadata:
+      labels:
+        app: web-server
+    spec:
+      containers:
+        - name: web-server
+          image: yuva19102003/frontend:latest
+          ports:
+            - containerPort: 3000
+          env:
+            - name: API_KEY
+              value: 'http://golangapi-service:8080'
+         
