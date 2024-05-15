@@ -54,7 +54,7 @@ jobs:
 
       - name: Load Docker image
         run: |
-          docker load -i scanimage.tar
+          docker load -i image.tar
        
       - name: push it to dockerhub
         run: |
