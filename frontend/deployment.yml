@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
         - name: web-server
-          image: yuva19102003/frontend:latest
+          image: yuva19102003/frontend:724d4c90e3d4e8cd20fdf1a6ee8bf042777d8da6
           ports:
             - containerPort: 3000
           env:
