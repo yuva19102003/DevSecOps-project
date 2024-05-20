@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
         - name: mysql
-          image: yuva19102003/database:f85b5ad26190abcbb8e8b7c7fdb974143d4988d9
+          image: yuva19102003/database:96b87d23d9f63dbfbd989a69617e6ffc999336ec
           ports:
             - containerPort: 3306
 
