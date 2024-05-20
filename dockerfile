@@ -18,5 +18,4 @@ FROM scratch
 # Copy the compiled binary from the build stage
 WORKDIR /app
 COPY --from=build /build/bin ./bin
-
 CMD ["/app/bin"]
