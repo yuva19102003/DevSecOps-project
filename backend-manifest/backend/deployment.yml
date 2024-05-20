@@ -1,0 +1,38 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: golangapi
+  namespace: app
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: golangapi
+  template:
+    metadata:
+      labels:
+        app: golangapi
+    spec:
+      containers:
+        - name: golangapi
+          image: yuva19102003/backend:latest
+          ports:
+            - containerPort: 8080
+          env:
+            - name: HOST
+              value: mysql-service
+            - name: USER
+              valueFrom:
+                secretKeyRef:
+                  name: secretkv
+                  key: USER
+            - name: PASS
+              valueFrom:
+                secretKeyRef:
+                  name: secretkv
+                  key: PASS
+            - name: DB
+              valueFrom:
+                secretKeyRef:
+                  name: secretkv
+                  key: DB
