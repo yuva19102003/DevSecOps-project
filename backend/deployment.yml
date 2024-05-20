@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
         - name: golangapi
-          image: yuva19102003/backend:648d9fb78073e32a876f2c52c6de2ff79f842739
+          image: yuva19102003/backend:df90da6f63916221eed2a64db54867e99a3f1749
           ports:
             - containerPort: 8080
           env:
