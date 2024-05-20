@@ -6,4 +6,3 @@ ENV MYSQL_DATABASE=anime_db \
 
 # Copy SQL file to docker-entrypoint-initdb.d directory
 COPY ./data.sql /docker-entrypoint-initdb.d/
-
