@@ -1,7 +1,12 @@
 
-
+# DEVSECOPS PROJECT 
+---
+## DIAGRAM 
 <img src="./screenshots/devsecops.drawio.svg">
 
+## APPLICATION 
+### DIAGRAM 
+<img src="screenshots/application.drawio.svg">
 # HASHICORP VAULT
 
 ## Install Vault cluster
