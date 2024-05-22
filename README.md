@@ -54,10 +54,11 @@ This repository contains a three-tier microservices application that generates r
 3. Create a table `anime_quotes` with the following schema:
 
 ```sql
-CREATE TABLE anime_quotes (
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    quote TEXT NOT NULL,
-    author VARCHAR(255) NOT NULL
+USE anime_db;
+
+CREATE TABLE quote (
+    ID INT AUTO_INCREMENT PRIMARY KEY,
+    Content VARCHAR(255)
 );
 ```
 
@@ -67,12 +68,7 @@ CREATE TABLE anime_quotes (
 4. Insert some quotes into the `anime_quotes` table:
 
 ```sql
-USE anime_db;
 
-CREATE TABLE quote (
-    ID INT AUTO_INCREMENT PRIMARY KEY,
-    Content VARCHAR(255)
-);
 
 INSERT INTO quote (Content) VALUES
 ('The world is cruel but also very beautiful — Attack on Titan'),
