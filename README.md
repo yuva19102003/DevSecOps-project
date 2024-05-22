@@ -107,10 +107,59 @@ CREATE TABLE anime_quotes (
 ```
 
 ### DIAGRAM 
+<img src="screenshots/application.drawio.svg">
 
-<div style="text-align: center;">
-  <img src="screenshots/application.drawio.svg" alt="Application diagram">
-</div>
+4. Insert some quotes into the `anime_quotes` table:
+
+```sql
+INSERT INTO anime_quotes (quote, author) VALUES
+('Knowing what it feels to be in pain, is exactly why we try to be kind to others', 'Jiraiya'),
+('I\'ll leave tomorrow\'s problems to tomorrow\'s me.', 'Saitama'),
+('In the end, it doesn\'t matter what anyone else thinks, because I believe in myself.', 'Naruto Uzumaki');
+```
+
+### Running the Backend
+
+1. Navigate to the `backend` directory.
+2. Install the required dependencies.
+3. Create a `config.go` file with your database connection details.
+4. Start the backend server.
+
+### Running the Frontend
+
+1. Navigate to the `frontend` directory.
+2. Create the necessary HTML templates.
+3. Start the frontend server.
+
+### Accessing the Application
+
+Open your web browser and go to `http://localhost:8080` to access the Random Anime Quote Generator.
+
+## Project Structure
+
+```
+.
+├── backend
+│   ├── main.go
+│   ├── config.go
+│   └── quotes.go
+├── frontend
+│   ├── main.go
+│   └── templates
+│       └── index.html
+└── README.md
+```
+
+## Backend (Gin API)
+
+- `main.go`: Initializes the Gin server and sets up the routes.
+- `config.go`: Contains the database connection logic.
+- `quotes.go`: Contains the logic for fetching random quotes from the database.
+
+## Frontend (Golang and HTML)
+
+- `main.go`: Serves the HTML page and handles requests.
+- `templates/index.html`: The HTML template for the frontend.
 
  
 # HASHICORP VAULT
