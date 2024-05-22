@@ -6,9 +6,11 @@
 
 ## APPLICATION 
 ### DIAGRAM 
-<center>
-<img src="screenshots/application.drawio.svg">
-<\center>
+
+<div style="text-align: center;">
+  <img src="screenshots/application.drawio.svg" alt="Application diagram">
+</div>
+
  
 # HASHICORP VAULT
 
