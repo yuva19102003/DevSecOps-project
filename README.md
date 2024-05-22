@@ -25,7 +25,7 @@
     <img src="https://argo-cd.readthedocs.io/en/stable/assets/logo.png" alt="ArgoCD" width="50" height="50">
   </a>
   <a href="https://aws.amazon.com/cloudwatch/" target="_blank">
-    <img src="https://d1.awsstatic.com/logos/aws_logo_smile_1200x630.5d1149417550b98c55b8af1450493b6e7fb8d0b8.png" alt="CloudWatch" width="50" height="50">
+    <img src="screenshots/CloudWatch.png" alt="CloudWatch" width="50" height="50">
   </a>
   <a href="https://grafana.com" target="_blank">
     <img src="https://grafana.com/static/img/menu/logo2.svg" alt="Grafana" width="50" height="50">
@@ -37,7 +37,7 @@
     <img src="https://avatars.githubusercontent.com/u/44036562?s=200&v=4" alt="GitHub Action" width="50" height="50">
   </a>
   <a href="https://snyk.io" target="_blank">
-    <img src="https://snyk.io/wp-content/uploads/2020/10/snyk-logo.png" alt="Snyk Scan" width="50" height="50">
+    <img src="screenshots/snyk.png" alt="Snyk Scan" width="50" height="50">
   </a>
 </div>
 
