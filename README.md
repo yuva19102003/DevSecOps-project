@@ -1,49 +1,4 @@
 
-<div style="text-align: center;">
-  <a href="https://golang.org" target="_blank">
-    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/05/Go_Logo_Blue.svg/512px-Go_Logo_Blue.svg.png" alt="Golang" width="50" height="50">
-  </a>
-  <a href="https://developer.mozilla.org/en-US/docs/Web/HTML" target="_blank">
-    <img src="https://upload.wikimedia.org/wikipedia/commons/6/61/HTML5_logo_and_wordmark.svg" alt="HTML" width="50" height="50">
-  </a>
-  <a href="https://www.mysql.com" target="_blank">
-    <img src="https://www.mysql.com/common/logos/logo-mysql-170x115.png" alt="MySQL" width="50" height="50">
-  </a>
-  <a href="https://www.docker.com" target="_blank">
-    <img src="https://www.docker.com/wp-content/uploads/2022/03/Moby-logo.png" alt="Docker" width="50" height="50">
-  </a>
-  <a href="https://aws.amazon.com/eks/" target="_blank">
-    <img src="https://d1.awsstatic.com/logos/aws_logo_smile_1200x630.5d1149417550b98c55b8af1450493b6e7fb8d0b8.png" alt="EKS" width="50" height="50">
-  </a>
-  <a href="https://www.terraform.io" target="_blank">
-    <img src="https://www.datocms-assets.com/2885/1629941242-brandhcterraformprimary2colorwhitebackgroundrgb.svg" alt="Terraform" width="50" height="50">
-  </a>
-  <a href="https://www.vaultproject.io" target="_blank">
-    <img src="https://www.datocms-assets.com/2885/1629941243-brandhc_vaultprimary2colorwhitebackgroundrgb.svg" alt="Hashicorp Vault" width="50" height="50">
-  </a>
-  <a href="https://argo-cd.readthedocs.io/en/stable/" target="_blank">
-    <img src="https://argo-cd.readthedocs.io/en/stable/assets/logo.png" alt="ArgoCD" width="50" height="50">
-  </a>
-  <a href="https://aws.amazon.com/cloudwatch/" target="_blank">
-    <img src="screenshots/CloudWatch.png" alt="CloudWatch" width="50" height="50">
-  </a>
-  <a href="https://grafana.com" target="_blank">
-    <img src="https://grafana.com/static/img/menu/logo2.svg" alt="Grafana" width="50" height="50">
-  </a>
-  <a href="https://slack.com" target="_blank">
-    <img src="https://a.slack-edge.com/80588/marketing/img/icons/icon_slack_hash_colored.png" alt="Slack" width="50" height="50">
-  </a>
-  <a href="https://github.com/features/actions" target="_blank">
-    <img src="https://avatars.githubusercontent.com/u/44036562?s=200&v=4" alt="GitHub Action" width="50" height="50">
-  </a>
-  <a href="https://snyk.io" target="_blank">
-    <img src="screenshots/snyk.png" alt="Snyk Scan" width="50" height="50">
-  </a>
-</div>
-
-
-
-
 
 
 
@@ -54,20 +9,20 @@
 
 ## APPLICATION 
 
-# Random Anime Quote Generator
+### Random Anime Quote Generator
 
 This repository contains a three-tier microservices application that generates random anime quotes. The application is composed of the following tiers:
 - **Frontend**: Built with Golang and HTML
 - **Backend**: Golang API using the Gin framework
 - **Database**: MySQL
 
-## Architecture
+### Architecture
 
 - **Frontend**: Serves the HTML page and handles user interactions.
 - **Backend**: Provides API endpoints for fetching random quotes.
 - **Database**: Stores the anime quotes.
 
-## Technologies Used
+### Technologies Used
 
 <div style="text-align: center;">
   <a href="https://golang.org" target="_blank">
@@ -134,7 +89,7 @@ INSERT INTO anime_quotes (quote, author) VALUES
 
 Open your web browser and go to `http://localhost:8080` to access the Random Anime Quote Generator.
 
-## Project Structure
+### Project Structure
 
 ```
 .
@@ -149,19 +104,19 @@ Open your web browser and go to `http://localhost:8080` to access the Random Ani
 └── README.md
 ```
 
-## Backend (Gin API)
+### Backend (Gin API)
 
 - `main.go`: Initializes the Gin server and sets up the routes.
 Contains the database connection logic. Contains the logic for fetching random quotes from the database.
 
-## Frontend (Golang and HTML)
+### Frontend (Golang and HTML)
 
 - `main.go`: Serves the HTML page and handles requests.
 - `templates/index.html`: The HTML template for the frontend.
 
 
 
-# Multi-Branch GitHub Action Workflow
+## Multi-Branch GitHub Action Workflow
 
 This repository contains a GitHub Action workflow to automate the process of building, scanning, and deploying Docker images across multiple branches. The workflow includes the following steps:
 1. **Build a Docker image**
@@ -170,14 +125,14 @@ This repository contains a GitHub Action workflow to automate the process of bui
 4. **Update the manifest**
 5. **Notify in a Slack channel**
 
-## Prerequisites
+### Prerequisites
 
 - A GitHub repository
 - DockerHub account with repository created
 - Snyk account and API token
 - Slack workspace and a webhook URL configured for notifications
 
-## Setup
+### Setup
 
 1. **Clone the repository**
 
@@ -194,11 +149,11 @@ This repository contains a GitHub Action workflow to automate the process of bui
     - `SNYK_TOKEN`: Your Snyk API token
     - `SLACK_WEBHOOK_URL`: Your Slack webhook URL
 
-## Workflow Steps
+### Workflow Steps
 
 GitHub Actions workflow file (`.github/workflows/main.yml`) that performs the above steps:
 
-### 1. Build a Docker image
+#### 1. Build a Docker image
 
 The first step in the workflow builds a Docker image from the Dockerfile in the repository.
 
@@ -226,7 +181,7 @@ docker_build:
           name: docker-image
           path: image.tar
 ```
-### 2. Scan the Docker image using Snyk
+#### 2. Scan the Docker image using Snyk
 
 In this step, the built Docker image is scanned for vulnerabilities using Snyk.
 
@@ -288,7 +243,7 @@ snyk_scan:
 
 ```
 
-### 3. Push the Docker image to DockerHub
+#### 3. Push the Docker image to DockerHub
 
 After scanning, the Docker image is pushed to DockerHub.
 
@@ -322,7 +277,7 @@ push_image:
           
 ```
 
-### 4. Update the manifest
+#### 4. Update the manifest
 
 The manifest file in the repository is updated with the new image details.
 
@@ -355,7 +310,7 @@ update_file:
         git push origin HEAD:manifest
 
 ```
-### 5. Notify in a Slack channel
+#### 5. Notify in a Slack channel
 
 Finally, a notification is sent to a specified Slack channel with the details of the build and deployment.
 ```bash
@@ -379,9 +334,9 @@ slack_notify:
 ```
 
  
-# HASHICORP VAULT
+## HASHICORP VAULT
 
-## Install Vault cluster
+### Install Vault cluster
 
 ### Diagram for k8s cluster
  
@@ -426,7 +381,7 @@ The output should resemble the following:
     $ helm get manifest vault
 
 
-## Configure Vault
+### Configure Vault
 
 ### setup Vault cluster
 
@@ -529,7 +484,7 @@ Examine the file vault/vault-operator-values.yaml:
         address is the address on the Kubernetes cluster.
         skipTLSVerify set to false enables TLS certificate verification.
 
-## Deploy and sync a secret
+### Deploy and sync a secret
  <img src="screenshots/3.png">
 Create secret in App pod
  
@@ -556,7 +511,7 @@ This repo is a companion to [Static secrets with the Vault Secrets Operator on K
 
 ---
 
-# ARGOCD
+## ARGOCD
 
  Install manually
 
@@ -586,10 +541,10 @@ This repo is a companion to [Static secrets with the Vault Secrets Operator on K
 
 ---
 
-# monitoring
+## monitoring
 
 
-## grafana
+### grafana
 
 ### Add helm repo
 
