@@ -166,7 +166,7 @@ Contains the database connection logic. Contains the logic for fetching random q
 
 ### Diagram for k8s cluster
  
- <img src="https://developer.hashicorp.com/_next/image?url=https%3A%2F%2Fcontent.hashicorp.com%2Fapi%2Fassets%3Fproduct%3Dtutorials%26version%3Dmain%26asset%3Dpublic%252Fimg%252Fvault%252Fkubernetes%252Fdiagram-vault-ns.png%26width%3D994%26height%3D451&w=1080&q=75">
+ <img src="screenshots/1.png">
 
 Using Helm install Vault on a local instance of minikube. Vault is installed it's own virtual cluster called a namespace.
 
@@ -285,7 +285,7 @@ Exit the Vault instance.
 
 
 Install the Vault Secrets Operator
- <img src="https://developer.hashicorp.com/_next/image?url=https%3A%2F%2Fcontent.hashicorp.com%2Fapi%2Fassets%3Fproduct%3Dtutorials%26version%3Dmain%26asset%3Dpublic%252Fimg%252Fvault%252Fkubernetes%252Fdiagram-vso.png%26width%3D992%26height%3D451&w=1080&q=75">
+ <img src="screenshots/2.png">
 Vault Secrets Operator
 
   Use helm to deploy the Vault Secrets Operator.
@@ -311,7 +311,7 @@ Examine the file vault/vault-operator-values.yaml:
         skipTLSVerify set to false enables TLS certificate verification.
 
 ## Deploy and sync a secret
- <img src="https://developer.hashicorp.com/_next/image?url=https%3A%2F%2Fcontent.hashicorp.com%2Fapi%2Fassets%3Fproduct%3Dtutorials%26version%3Dmain%26asset%3Dpublic%252Fimg%252Fvault%252Fkubernetes%252Fdiagram-app.png%26width%3D998%26height%3D451&w=1080&q=75">
+ <img src="screenshots/3.png">
 Create secret in App pod
  
 In this section you set up a namespace with a Kubernetes secret. That secret is managed through the Vault Secrets Operator.
