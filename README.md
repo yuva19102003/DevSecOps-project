@@ -405,3 +405,7 @@ kubectl expose service grafana --type=NodePort --target-port=3000 --name=grafana
 kubectl get secret --namespace monitoring grafana -o jsonpath="{.data.admin-password}" | base64 --decode ; echo
 ```
 ----
+
+## Contributing
+
+Contributions are welcome! Please fork this repository and submit a pull request with your changes.
