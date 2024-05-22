@@ -159,6 +159,225 @@ Contains the database connection logic. Contains the logic for fetching random q
 - `main.go`: Serves the HTML page and handles requests.
 - `templates/index.html`: The HTML template for the frontend.
 
+
+
+# Multi-Branch GitHub Action Workflow
+
+This repository contains a GitHub Action workflow to automate the process of building, scanning, and deploying Docker images across multiple branches. The workflow includes the following steps:
+1. **Build a Docker image**
+2. **Scan the Docker image using Snyk**
+3. **Push the Docker image to DockerHub**
+4. **Update the manifest**
+5. **Notify in a Slack channel**
+
+## Prerequisites
+
+- A GitHub repository
+- DockerHub account with repository created
+- Snyk account and API token
+- Slack workspace and a webhook URL configured for notifications
+
+## Setup
+
+1. **Clone the repository**
+
+    ```sh
+    git clone https://github.com/yuva19102003/DevSecOps-project.git
+    cd DevSecOps-project
+    ```
+
+2. **Create and configure GitHub Secrets**
+
+    In your GitHub repository, go to `Settings` > `Secrets and variables` > `Actions` and add the following secrets:
+    - `DOCKERHUB_USERNAME`: Your DockerHub username
+    - `DOCKERHUB_TOKEN`: Your DockerHub token
+    - `SNYK_TOKEN`: Your Snyk API token
+    - `SLACK_WEBHOOK_URL`: Your Slack webhook URL
+
+## Workflow Steps
+
+GitHub Actions workflow file (`.github/workflows/main.yml`) that performs the above steps:
+
+### 1. Build a Docker image
+
+The first step in the workflow builds a Docker image from the Dockerfile in the repository.
+
+```bash
+docker_build:
+    name: Build Docker Image
+    runs-on: ubuntu-latest
+    outputs:
+      build_tag: ${{ github.sha }}
+      JOB_STATUS: ${{ job.status }}
+
+    steps:
+    
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Build an image from Dockerfile
+        run: |
+          docker build -t docker.io/yuva19102003/backend:${{ github.sha }} .
+          docker save -o image.tar yuva19102003/backend:${{ github.sha }}
+
+      - name: Upload Docker image
+        uses: actions/upload-artifact@v2
+        with:
+          name: docker-image
+          path: image.tar
+```
+### 2. Scan the Docker image using Snyk
+
+In this step, the built Docker image is scanned for vulnerabilities using Snyk.
+
+```bash
+snyk_scan:
+    name: Snyk Scan 
+    runs-on: ubuntu-latest
+    needs: docker_build
+    outputs:
+        RESULTS_LENGTH: ${{ steps.no_of_vuln.outputs.RESULTS_LENGTH }}
+        JOB_STATUS: ${{ job.status }}
+
+    steps:
+
+      - name: Download Docker image
+        uses: actions/download-artifact@v2
+        with:
+          name: docker-image
+
+      - name: Load Docker image
+        run: |
+          docker load -i image.tar
+    
+      - name: Run Snyk to check Docker image for vulnerabilities
+        uses: snyk/actions/docker@master
+        env:
+          SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
+        with:
+          image: yuva19102003/backend:${{ needs.docker_build.outputs.build_tag }}
+          args: --sarif-file-output=snyk.sarif
+       
+      - name: Count total number of vulnerabilities
+        id: no_of_vuln
+        run: |
+          RESULTS_LENGTH=$(jq '.runs[0].results | length' snyk.sarif)
+          echo "RESULTS_LENGTH=$RESULTS_LENGTH" >> $GITHUB_ENV
+          echo $RESULTS_LENGTH
+          echo "::set-output name=RESULTS_LENGTH::$RESULTS_LENGTH"
+
+      - name: Pass_or_Fail_the_job
+        id: result
+        run: |
+            if [ "$RESULTS_LENGTH" != 0 ]; then         
+                echo "Job Failed"
+                exit 1
+            else 
+                echo "Pass"
+            fi
+            
+      - name: image to tar
+        run: |
+          docker save -o scanimage.tar yuva19102003/backend:${{ needs.docker_build.outputs.build_tag }}
+
+      - name: Upload Docker image
+        uses: actions/upload-artifact@v2
+        with:
+          name: scanned-docker-image
+          path: scanimage.tar
+
+```
+
+### 3. Push the Docker image to DockerHub
+
+After scanning, the Docker image is pushed to DockerHub.
+
+```bash
+push_image:
+    name: Push Image to Dockerhub
+    runs-on: ubuntu-latest
+    needs: [docker_build, snyk_scan]
+    outputs:
+      JOB_STATUS: ${{ job.status }}
+      final_tag: ${{ needs.docker_build.outputs.build_tag }}
+    env:
+      DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
+      DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
+
+    steps:
+
+      - name: Download Docker image
+        uses: actions/download-artifact@v2
+        with:
+          name: scanned-docker-image
+
+      - name: Load Docker image
+        run: |
+          docker load -i scanimage.tar
+       
+      - name: push it to dockerhub
+        run: |
+          docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
+          docker push yuva19102003/backend:${{ needs.docker_build.outputs.build_tag }}
+          
+```
+
+### 4. Update the manifest
+
+The manifest file in the repository is updated with the new image details.
+
+```bash
+update_file:
+    name: update eks yml and version file
+    runs-on: ubuntu-latest
+    needs: push_image
+    outputs:
+      JOB_STATUS: ${{ job.status }}
+      commit: ${{ github.sha }} 
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v2
+      with:
+        ref: 'manifest'
+        token: ${{ secrets.TOKEN }} # Checkout the 'manifest' branch
+
+    - name: Set up Git
+      run: |
+        git config --global user.email "you@example.com"
+        git config --global user.name "GitHub Actions"
+
+    - name: Make changes to deployment.yml
+      run: |
+        sed -i "s+yuva19102003/backend:.*+yuva19102003/backend:${{ needs.push_image.outputs.final_tag }}+g" backend/deployment.yml
+        git add backend/deployment.yml
+        git commit -m "Update deployment configuration"
+        git push origin HEAD:manifest
+
+```
+### 5. Notify in a Slack channel
+
+Finally, a notification is sent to a specified Slack channel with the details of the build and deployment.
+```bash
+slack_notify:
+    name: notify in slack channel
+    runs-on: ubuntu-latest
+    needs: [docker_build, snyk_scan, push_image, update_file]
+    if: ${{ always() }}
+    steps:
+
+      - name: Send notification on Slack using Webhooks
+        uses: slackapi/slack-github-action@v1.24.0
+        with:
+          payload: |
+               {
+                 "text": "*GITHUB ACTION FROM BACKEND TIER MICROSERVICE *\n\n*The Docker Build job Status : ${{ needs.docker_build.outputs.JOB_STATUS }}*\n*The Docker image name : yuva19102003/backend:${{ needs.docker_build.outputs.build_tag }}*\n\n*The Snyk scan job status : ${{ needs.snyk_scan.outputs.JOB_STATUS }}* \n*Number of vulnerabilities : ${{ needs.snyk_scan.outputs.RESULTS_LENGTH }}*\n\n *Push image to Dockerhub job status : ${{ needs.docker_build.outputs.JOB_STATUS}}*\n*Docker Command : docker pull yuva19102003/backend:v${{ needs.docker_build.outputs.build_tag }}*\n\n*Update EKS manifest job status : ${{ needs.update_file.outputs.JOB_STATUS}}*\n*Mainfest Branch Commit id : ${{ needs.update_file.outputs.commit}}*\n\n*Detail*: https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}"
+               }
+        env:
+          SLACK_WEBHOOK_URL: ${{ secrets.slack_webhook_url }}
+
+```
+
  
 # HASHICORP VAULT
 
