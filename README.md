@@ -1,4 +1,52 @@
 
+<div style="text-align: center;">
+  <a href="https://golang.org" target="_blank">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/05/Go_Logo_Blue.svg/512px-Go_Logo_Blue.svg.png" alt="Golang" width="50" height="50">
+  </a>
+  <a href="https://developer.mozilla.org/en-US/docs/Web/HTML" target="_blank">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/6/61/HTML5_logo_and_wordmark.svg" alt="HTML" width="50" height="50">
+  </a>
+  <a href="https://www.mysql.com" target="_blank">
+    <img src="https://www.mysql.com/common/logos/logo-mysql-170x115.png" alt="MySQL" width="50" height="50">
+  </a>
+  <a href="https://www.docker.com" target="_blank">
+    <img src="https://www.docker.com/wp-content/uploads/2022/03/Moby-logo.png" alt="Docker" width="50" height="50">
+  </a>
+  <a href="https://aws.amazon.com/eks/" target="_blank">
+    <img src="https://d1.awsstatic.com/logos/aws_logo_smile_1200x630.5d1149417550b98c55b8af1450493b6e7fb8d0b8.png" alt="EKS" width="50" height="50">
+  </a>
+  <a href="https://www.terraform.io" target="_blank">
+    <img src="https://www.datocms-assets.com/2885/1629941242-brandhcterraformprimary2colorwhitebackgroundrgb.svg" alt="Terraform" width="50" height="50">
+  </a>
+  <a href="https://www.vaultproject.io" target="_blank">
+    <img src="https://www.datocms-assets.com/2885/1629941243-brandhc_vaultprimary2colorwhitebackgroundrgb.svg" alt="Hashicorp Vault" width="50" height="50">
+  </a>
+  <a href="https://argo-cd.readthedocs.io/en/stable/" target="_blank">
+    <img src="https://argo-cd.readthedocs.io/en/stable/assets/logo.png" alt="ArgoCD" width="50" height="50">
+  </a>
+  <a href="https://aws.amazon.com/cloudwatch/" target="_blank">
+    <img src="https://d1.awsstatic.com/logos/aws_logo_smile_1200x630.5d1149417550b98c55b8af1450493b6e7fb8d0b8.png" alt="CloudWatch" width="50" height="50">
+  </a>
+  <a href="https://grafana.com" target="_blank">
+    <img src="https://grafana.com/static/img/menu/logo2.svg" alt="Grafana" width="50" height="50">
+  </a>
+  <a href="https://slack.com" target="_blank">
+    <img src="https://a.slack-edge.com/80588/marketing/img/icons/icon_slack_hash_colored.png" alt="Slack" width="50" height="50">
+  </a>
+  <a href="https://github.com/features/actions" target="_blank">
+    <img src="https://avatars.githubusercontent.com/u/44036562?s=200&v=4" alt="GitHub Action" width="50" height="50">
+  </a>
+  <a href="https://snyk.io" target="_blank">
+    <img src="https://snyk.io/wp-content/uploads/2020/10/snyk-logo.png" alt="Snyk Scan" width="50" height="50">
+  </a>
+</div>
+
+
+
+
+
+
+
 # DEVSECOPS PROJECT 
 ---
 ## DIAGRAM 
