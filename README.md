@@ -122,8 +122,7 @@ INSERT INTO anime_quotes (quote, author) VALUES
 
 1. Navigate to the `backend` directory.
 2. Install the required dependencies.
-3. Create a `config.go` file with your database connection details.
-4. Start the backend server.
+3. Start the backend server.
 
 ### Running the Frontend
 
@@ -153,8 +152,7 @@ Open your web browser and go to `http://localhost:8080` to access the Random Ani
 ## Backend (Gin API)
 
 - `main.go`: Initializes the Gin server and sets up the routes.
-- `config.go`: Contains the database connection logic.
-- `quotes.go`: Contains the logic for fetching random quotes from the database.
+Contains the database connection logic. Contains the logic for fetching random quotes from the database.
 
 ## Frontend (Golang and HTML)
 
