@@ -8,7 +8,8 @@
 ### DIAGRAM 
 <center>
 <img src="screenshots/application.drawio.svg">
- <\center>
+<\center>
+ 
 # HASHICORP VAULT
 
 ## Install Vault cluster
