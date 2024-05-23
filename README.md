@@ -523,6 +523,8 @@ This repo is a companion to [Static secrets with the Vault Secrets Operator on K
 
 ## ARGOCD
 
+<img src="screenshots/argocd.jpg">
+
  Install manually
 
     helm repo add argo https://argoproj.github.io/argo-helm
@@ -537,7 +539,7 @@ This repo is a companion to [Static secrets with the Vault Secrets Operator on K
 
     kubectl apply -f argocd-notifications-secret.yaml -f argocd-notifications-cm.yaml
 . frontend , backend and database
-    
+
     kubectl apply -f frontend.yaml -f backend.yaml -f database.yaml
 
 . get pods and svc
@@ -553,8 +555,9 @@ This repo is a companion to [Static secrets with the Vault Secrets Operator on K
 
 ## monitoring
 
-
+monitoring aws resources using cloudwatch and grafana 
 ### grafana
+
 
 ### Add helm repo
 
@@ -588,6 +591,15 @@ kubectl expose service grafana --type=NodePort --target-port=3000 --name=grafana
 ```bash
 kubectl get secret --namespace monitoring grafana -o jsonpath="{.data.admin-password}" | base64 --decode ; echo
 ```
+
+`monitoring ec2`
+
+<img src="screenshots/ec2-db.jpg">
+
+`monitoring network load balancer`
+
+<img src="screenshots/nlb1.jpg">
+<img src="screenshots/nlb2.jpg">
 ----
 
 ## Contributing
