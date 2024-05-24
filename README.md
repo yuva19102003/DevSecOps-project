@@ -645,14 +645,13 @@ This repo is a companion to [Static secrets with the Vault Secrets Operator on K
     kubectl get pods -n argocd 
     kubectl get svc -n argocd
 
- <img src="screenshots/argocd1.jpg">
+   <img src="screenshots/argocd1.jpg">
  
 . login to argocd
 
     kubectl -n argocd get secret argocd-initial-admin-secret -o jsonpath="{.data.password}" | base64 -d
     kubectl port-forward svc/argocd-server 8081:80 -n argocd
 
-<img src="screenshots/argocd2.jpg">
 
 #### pods and svc provisioned by argocd
 
