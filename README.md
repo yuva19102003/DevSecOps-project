@@ -329,7 +329,7 @@ update_file:
 
 Finally, a notification is sent to a specified Slack channel with the details of the build and deployment.
 
-<img src="screenshots/ slack1.jpg">
+<img src="screenshots/slack1.jpg">
 
 ```bash
 slack_notify:
