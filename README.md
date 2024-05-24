@@ -128,15 +128,21 @@ Contains the database connection logic. Contains the logic for fetching random q
 
 
 ## Multi-Branch GitHub Action Workflow
+
 <img src="screenshots/ci1.jpg">
+
 This repository contains a GitHub Action workflow to automate the process of building, scanning, and deploying Docker images across multiple branches. The workflow includes the following steps:
+
 <img src="screenshots/ci2.jpg">
+
 1. **Build a Docker image**
 2. **Scan the Docker image using Snyk**
 3. **Push the Docker image to DockerHub**
 4. **Update the manifest**
 5. **Notify in a Slack channel**
+
 <img src="screenshots/ci3.jpg">
+
 ### Prerequisites
 
 - A GitHub repository
