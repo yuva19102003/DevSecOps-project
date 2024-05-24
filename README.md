@@ -1,7 +1,4 @@
 
-
-
-
 # DEVSECOPS PROJECT 
 ---
 ## DIAGRAM 
@@ -331,6 +328,9 @@ update_file:
 #### 5. Notify in a Slack channel
 
 Finally, a notification is sent to a specified Slack channel with the details of the build and deployment.
+
+<img src="screenshots/ slack1.jpg">
+
 ```bash
 slack_notify:
     name: notify in slack channel
@@ -664,6 +664,11 @@ This repo is a companion to [Static secrets with the Vault Secrets Operator on K
 Target group 
 
 <img src="screenshots/lb2.jpg">
+
+#### argocd notification in slack channel 
+
+<img src="screenshots/slack2.jpg">
+
 ---
 
 ## monitoring
