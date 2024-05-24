@@ -351,6 +351,96 @@ slack_notify:
 
 ```
 
+## Provisioning an EKS Cluster Using Terraform
+
+## Setup Instructions
+
+### Step 1: Clone the Repository
+
+First, clone the repository containing the Terraform configuration files.
+
+```sh
+git clone https://github.com/yuva19102003/DevSecOps-project.git
+cd terraform-eks
+```
+
+### Step 2: Configure AWS Credentials
+
+Make sure your AWS credentials are configured. You can set up AWS CLI credentials by running:
+
+```sh
+aws configure
+```
+
+### Step 3: Initialize Terraform
+
+Initialize the Terraform configuration. This step downloads the necessary provider plugins and prepares the working directory.
+
+```bash
+.
+```
+
+
+```sh
+terraform init
+```
+
+### Step 4: Review and Edit Variables
+
+Review the `variables.tf` file and edit the values as necessary. You can also create a `terraform.tfvars` file to set these values.
+
+### Step 5: Apply the Terraform Configuration
+
+Apply the Terraform configuration to create the EKS cluster and associated resources.
+
+```sh
+terraform apply
+```
+<img src="screenshots/tf1.jpg">
+
+Review the changes and type `yes` to confirm and start the provisioning process.
+
+<img src="screenshots/tf2.jpg">
+
+### Step 6: Configure kubectl
+
+After the Terraform apply command completes, configure kubectl to connect to your new EKS cluster. Terraform outputs the necessary configuration commands.
+
+```sh
+aws eks --region <region> update-kubeconfig --name <cluster_name>
+```
+
+Replace `<region>` and `<cluster_name>` with your specified values.
+
+### Step 7: Verify the EKS Cluster
+
+Verify that your EKS cluster is up and running by listing the nodes and svc:
+
+```sh
+kubectl get svc
+```
+<img src="screenshots/tf3.jpg">
+
+You should see the worker nodes listed.
+
+<img src="screenshots/tf4.jpg">
+
+## Cleaning Up
+
+To destroy the EKS cluster and all associated resources, run:
+
+```sh
+terraform destroy
+```
+
+Confirm the action by typing `yes`.
+
+---
+
+**Note**: Ensure that you have adequate IAM permissions for creating and managing EKS resources, and that your AWS account is not subject to any restrictions that might prevent the successful creation of these resources.
+
+
+
  
 ## HASHICORP VAULT
 
@@ -554,11 +644,27 @@ This repo is a companion to [Static secrets with the Vault Secrets Operator on K
 
     kubectl get pods -n argocd 
     kubectl get svc -n argocd
+
+ <img src="screenshots/argocd1.jpg">
+ 
 . login to argocd
 
     kubectl -n argocd get secret argocd-initial-admin-secret -o jsonpath="{.data.password}" | base64 -d
     kubectl port-forward svc/argocd-server 8081:80 -n argocd
 
+<img src="screenshots/argocd2.jpg">
+
+#### pods and svc provisioned by argocd
+
+<img src="screenshots/argocd2.jpg">
+
+#### Network Load Balancer 
+
+<img src="screenshots/lb1.jpg">
+
+Target group 
+
+<img src="screenshots/lb2.jpg">
 ---
 
 ## monitoring
