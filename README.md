@@ -375,6 +375,16 @@ slack_notify:
 
 ## Provisioning an EKS Cluster Using Terraform
 
+
+
+# Graph structure
+
+the graph sturcture of the whole terraform main configuration and the modules. 
+<img src="screenshots/tf0.jpg">
+```bash
+terraform graph |dot -Tpng > terraform-graph.png
+```
+
 ## Setup Instructions
 
 ### Step 1: Clone the Repository
