@@ -99,17 +99,39 @@ Open your web browser and go to `http://localhost:8080` to access the Random Ani
 
 ### Project Structure
 
+#### frontend
+
 ```
 .
-├── backend
-│   ├── main.go
-│   ├── config.go
-│   └── quotes.go
-├── frontend
-│   ├── main.go
-│   └── templates
-│       └── index.html
-└── README.md
+├── dockerfile
+├── go.mod
+├── main.go
+└── template
+    └── template.html
+
+1 directory, 4 files
+```
+
+#### backend
+
+```
+.
+├── dockerfile
+├── go.mod
+├── go.sum
+└── main.go
+
+0 directories, 4 files
+```
+
+#### database
+
+```
+.
+├── data.sql
+└── Dockerfile
+
+0 directories, 2 files
 ```
 
 ### Backend (Gin API)
