@@ -1,5 +1,15 @@
 
 # DEVSECOPS PROJECT 
+
+<a href="https://github.com/yuva19102003/DevSecOps-project" title="Go to GitHub repo"><img src="https://img.shields.io/static/v1?label=yuva19102003&message=DevSecOps-project&color=blue&logo=github" alt="yuva19102003 - DevSecOps-project"></a>
+<a href="https://github.com/yuva19102003/DevSecOps-project"><img src="https://img.shields.io/github/stars/yuva19102003/DevSecOps-project?style=social" alt="stars - DevSecOps-project"></a>
+<a href="https://github.com/yuva19102003/DevSecOps-project"><img src="https://img.shields.io/github/forks/yuva19102003/DevSecOps-project?style=social" alt="forks - DevSecOps-project"></a>
+<a href="https://github.com/yuva19102003/DevSecOps-project/actions?query=workflow:%22frontend-CI%22"><img src="https://github.com/yuva19102003/DevSecOps-project/workflows/frontend-CI/badge.svg" alt="frontend-CI"></a>
+<a href="https://github.com/yuva19102003/DevSecOps-project/releases/"><img src="https://img.shields.io/github/tag/yuva19102003/DevSecOps-project?include_prereleases=&sort=semver&color=blue" alt="GitHub tag"></a>
+<a href="#license"><img src="https://img.shields.io/badge/License-MIT-blue" alt="License"></a>
+<a href="https://github.com/yuva19102003/DevSecOps-project/issues"><img src="https://img.shields.io/github/issues/yuva19102003/DevSecOps-project" alt="issues - DevSecOps-project"></a></center>
+
+
 ---
 ## DIAGRAM 
 <img src="./screenshots/devsecops.drawio.svg">
